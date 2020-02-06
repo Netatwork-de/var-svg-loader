@@ -1,6 +1,15 @@
 {
 	"name": "@netatwork/var-svg-loader",
 	"description": "A webpack loader for parametizing svgs at build time.",
+	"keywords": [
+		"svg",
+		"webpack",
+		"loader",
+		"css variables",
+		"minify",
+		"format",
+		"parametize"
+	],
 	"version": "1.0.0",
 	"main": "./dist/index.js",
 	"types": "./types.d.ts",
