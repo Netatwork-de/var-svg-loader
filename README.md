@@ -47,9 +47,18 @@ someElement.innerHTML = svg.markup;
 ## TypeScript support
 To enable typescript support, reference the included type declarations:
 ```ts
-/// <reference types="@netatwork/var-svg-loader/types.d.ts" />
+/// <reference types="@netatwork/var-svg-loader/runtime" />
 
 import svg from "./my-icon.var.svg";
+```
+
+Or import the VarSvg interface:
+```ts
+import { VarSvg } from "@netatwork/var-svg-loader/runtime" />
+
+import svg from "./my-icon.var.svg";
+
+const myIcon: VarSvg = svg;
 ```
 
 <br>
