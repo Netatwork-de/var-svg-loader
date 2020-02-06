@@ -12,7 +12,6 @@
 	],
 	"version": "1.0.2",
 	"main": "./dist/index.js",
-	"types": "./types.d.ts",
 	"scripts": {
 		"compile": "rimraf ./dist && tsc && tsc -p tsconfig-runtime.json",
 		"test": "tsc -p tsconfig-test.json && ava",
