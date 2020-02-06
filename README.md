@@ -3,7 +3,7 @@ A webpack loader for parametizing svgs at build time.
 
 ## Installation
 ```shell
-npm i -D var-svg-loader
+npm i -D @netatwork/var-svg-loader
 ```
 
 ## Usage
