@@ -39,6 +39,7 @@
 	"peerDependencies": {
 		"webpack": "^4.0.0"
 	},
+	"repository": "github:Netatwork-de/var-svg-loader",
 	"author": "Net at Work GmbH",
 	"license": "Apache-2.0"
 }
