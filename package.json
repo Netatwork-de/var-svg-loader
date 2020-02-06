@@ -1,0 +1,44 @@
+{
+	"name": "@netatwork/var-svg-loader",
+	"description": "A webpack loader for parametizing svgs at build time.",
+	"version": "1.0.0",
+	"main": "./dist/index.js",
+	"types": "./types.d.ts",
+	"scripts": {
+		"compile": "rimraf ./dist && tsc && tsc -p tsconfig-runtime.json",
+		"test": "tsc -p tsconfig-test.json && ava",
+		"start": "tsc -p tsconfig-test.json && concurrently -n tsc,ava \"tsc -p tsconfig-test.json -w\" \"ava -w\"",
+		"prepack": "npm test && npm run compile"
+	},
+	"dependencies": {
+		"css": "^2.2.4",
+		"html-escape": "^2.0.0",
+		"svg-parser": "^2.0.3"
+	},
+	"devDependencies": {
+		"@types/css": "0.0.31",
+		"@types/jsdom": "^12.2.4",
+		"@types/loader-utils": "^1.1.3",
+		"@types/node": "^13.7.0",
+		"@types/svg-parser": "^2.0.1",
+		"@types/webpack": "^4.41.5",
+		"ava": "^3.2.0",
+		"concurrently": "^5.1.0",
+		"html-webpack-plugin": "^3.2.0",
+		"jsdom": "^16.1.0",
+		"loader-utils": "^1.2.3",
+		"memfs": "^3.0.4",
+		"rimraf": "^3.0.1",
+		"ts-loader": "^6.2.1",
+		"typescript": "^3.7.5",
+		"unionfs": "^4.2.1",
+		"webpack": "^4.41.5",
+		"webpack-cli": "^3.3.10",
+		"webpack-dev-server": "^3.10.3"
+	},
+	"peerDependencies": {
+		"webpack": "^4.0.0"
+	},
+	"author": "Net at Work GmbH",
+	"license": "Apache-2.0"
+}
