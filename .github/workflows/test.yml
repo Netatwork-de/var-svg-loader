@@ -1,0 +1,15 @@
+name: Test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install nodejs
+      uses: actions/setup-node@v1
+    - name: Run tests
+      run: |
+        npm ci
+        npm test
