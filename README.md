@@ -1,12 +1,37 @@
 # @netatwork/var-svg-loader
 A webpack loader for parametizing svgs at build time.
 
-## Installation
+![example image](example.png)
+
+As almost all graphic software does not support css variables when exporting svgs, this loader can be used to replace specific colors with css variables at build time. For instance, an icon color can be changed by a theme without maintaining different versions of the same icon:
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <style>
+        .bg { fill: #506070; }
+    </style>
+    <rect class="bg" width="64" height="64" />
+    <circle cx="0" cy="48" r="48" fill="#D0D3D6" />
+    <rect width="64" height="16" x="0" y="0" style="fill: #00AFFF" />
+</svg>
+```
+can be transformed into:
+```xml
+<svg viewBox="0 0 64 64">
+    <style>
+        .bg { fill: var(--bg) }
+    </style>
+    <rect class="bg" width="64" height="64" />
+    <circle cx="0" cy="48" r="48" fill="var(--color1)" />
+    <rect width="64" height="16" x="0" y="0" style="fill: var(--color2)" />
+</svg>
+```
+
+## Usage
 ```shell
 npm i -D @netatwork/var-svg-loader
 ```
 
-## Usage
 ```js
 // Add the following rule to your webpack config:
 {
