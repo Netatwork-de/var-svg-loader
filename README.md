@@ -27,11 +27,14 @@ can be transformed into:
 </svg>
 ```
 
-## Usage
+<br>
+
+
+
+# Configuration
 ```shell
 npm i -D @netatwork/var-svg-loader
 ```
-
 ```js
 // Add the following rule to your webpack config:
 {
@@ -56,6 +59,54 @@ npm i -D @netatwork/var-svg-loader
 	+ _this_ is the webpack loader context.
 	+ return nothing to leave the value as is or a string to replace it.
 
+## Helpers
+The following helper functions can be used to assemble
+a parametize function that fit your needs
+
+### `colors`
+Parametize colors by replacing the svg `stroke` and `fill` attribute values with css variables:
+```js
+import { colors } from "@netatwork/var-svg-loader";
+
+parametize: colors({
+	prefix: "--example-icon-",
+	colors: {
+		colorA: "#ff0000",
+		colorB: "rgb(0, 127, 255)",
+		...
+	}
+})
+```
+```xml
+<svg>
+	<rect fill="#ff0000" ... />
+	<path stroke="#007fff" ... />
+</svg>
+<!-- is transformed to -->
+<svg>
+	<rect fill="var(--example-icon-colorA)" ... />
+	<path stroke="var(--example-icon-colorB)" ... />
+</svg>
+```
+
+### `oneOf`
+Use the first of the specified functions that returns a value.
+```js
+import { oneOf } from "@netatwork/var-svg-loader";
+
+parametize: oneOf(
+	parametizeColors({ ... }),
+	parametizeColors(require("some-package/some-config.json"))
+)
+```
+
+
+
+<br>
+
+# Usage
+
+## Imports
 Svg files can now be imported thw following way:
 ```js
 import svg from "./my-icon.var.svg";

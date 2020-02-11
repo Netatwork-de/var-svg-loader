@@ -5,20 +5,24 @@ import { parse as parseCSS, stringify as stringifyCSS, Rule as CSSRule } from "c
 import htmlEscape = require("html-escape");
 import { moduleTemplate } from "./module-template";
 
+export * from "./helpers";
+
+/**
+ * Called for every attribute or css value that could be parametized.
+ * @param value The raw value.
+ * @param location The location of the value consisting of elements in the following format:
+ * + `<foo>` - Represents an svg node.
+ * + `foo=` - Represents an svg node attribute name.
+ * + `foo:` - Represents a css property.
+ *
+ * _Css selector paths are not included for now._
+ *
+ * @returns nothing to leave the value as is or a string to replace it.
+ */
+export type VarSvgParametize = (this: loader.LoaderContext, value: string, location: string[]) => string | void | undefined;
+
 export interface VarSvgLoaderOptions {
-	/**
-	 * Called for every attribute or css value that could be parametized.
-	 * @param value The raw value.
-	 * @param location The location of the value consisting of elements in the following format:
-	 * + `<foo>` - Represents an svg node.
-	 * + `foo=` - Represents an svg node attribute name.
-	 * + `foo:` - Represents a css property.
-	 *
-	 * _Css selector paths are not included for now._
-	 *
-	 * @returns nothing to leave the value as is or a string to replace it.
-	 */
-	parametize(this: loader.LoaderContext, value: string, location: string[]): string | void | undefined;
+	parametize: VarSvgParametize;
 }
 
 const excludePropNames = new Set(["id"]);
